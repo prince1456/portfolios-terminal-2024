@@ -8,6 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        gradient: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "100%": { backgroundPosition: "100% 50%" }
+        },
+        blink: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" }
+        }
+      },
+      animation: {
+        blink: "blink 800ms infinite",
+        gradient: "gradient 6s linear infinite"
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -15,6 +29,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [ require('@tailwindcss/typography') ],
 };
 export default config;
