@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, ComponentType } from "react";
-import Cx from "classNames";
+import Cx from "classnames";
 import AsciiArt from "@/components/AsciiArt";
 import DIRECTORIES_LIST, { BaseDirectory } from '@/constants/common';
 import type { RootDirectory } from '@/constants/common';
