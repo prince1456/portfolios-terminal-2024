@@ -4,8 +4,18 @@ import HomeComponent, {
   ExperienceComponent,
   SkillsComponent
 } from "@/components/HomeComponent";
-
-const DIRECTORIES_LIST = {
+import React, { ComponentType } from 'react';
+export interface BaseDirectory {
+  component:  ComponentType<any>;
+  subDirectories: string[];
+}
+export interface RootDirectory extends BaseDirectory {
+  about: BaseDirectory;
+  experience: BaseDirectory;
+  skills: BaseDirectory;
+  contact: BaseDirectory;
+}
+export const DIRECTORIES_LIST: RootDirectory = {
   component: () => <HomeComponent />,
   subDirectories: ["Home", "About", "Experience", "Skills", "Contact"],
   about: {
@@ -25,6 +35,7 @@ const DIRECTORIES_LIST = {
     subDirectories: [],
   },
 };
+
 export const META_DATA = { 
   title: "Ali Alizada Portfolios Website"
 

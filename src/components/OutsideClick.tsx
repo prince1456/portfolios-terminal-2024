@@ -6,10 +6,10 @@ type PropsType = {
 };
 
 const OutSideClickWrapper = ({ onOutsideClick, children }: PropsType) => {
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const handleClickOutside = useCallback(
     (event: any) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+      if (wrapperRef.current && !wrapperRef?.current?.contains(event.target)) {
         onOutsideClick();
       }
     },

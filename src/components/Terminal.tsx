@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, ComponentType } from "react";
 import Cx from "classNames";
 import AsciiArt from "@/components/AsciiArt";
-import DIRECTORIES_LIST, { META_DATA} from '@/constants/common';
+import DIRECTORIES_LIST, { BaseDirectory } from '@/constants/common';
+import type { RootDirectory } from '@/constants/common';
 import type { Message, MessagesType } from '@/types/common.types';
 import { HelpComponent } from "@/components/HomeComponent";
-// either Static metadata
 
+type DirectoryKey = keyof RootDirectory;
 export default function TerminalComponents() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [currentCommand, setCurrentCommand] = useState("");
@@ -26,6 +27,16 @@ export default function TerminalComponents() {
       });
     }
   }, [messages]);
+  function getComponent(directoryKey: string): ComponentType<any> | undefined {
+    // Check if the key is a valid directory key
+    if (directoryKey in DIRECTORIES_LIST) {
+      const directory = (DIRECTORIES_LIST as any)[directoryKey] as BaseDirectory;
+      return directory.component;
+    }
+    return undefined; // Return undefined if the key does not correspond to a valid directory
+  }
+  
+  
   const executeCommand = (command: string) => {
     if(command === "help") {
       setMessages((prev) => [
@@ -52,15 +63,15 @@ export default function TerminalComponents() {
     const output: Message = { selectedCommand: command, message: "" };
 
     if (command === "ls") {
-      console.log({ currentDirectory });
+    
       output.Component =
         currentDirectory === "home"
           ? DIRECTORIES_LIST.component
-          : DIRECTORIES_LIST[currentDirectory].component;
+          : getComponent(currentDirectory); 
     } else if (command.startsWith("cd ")) {
       const dir = command.substring(3).trim();
-      if (DIRECTORIES_LIST[dir]) {
-        setCurrentDirectory(dir);
+      if (DIRECTORIES_LIST[dir as DirectoryKey]) {  
+        setCurrentDirectory(dir as DirectoryKey);
       } else {
         output.message = `no such file or directory: ${command}`;
       }

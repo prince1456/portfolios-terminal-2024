@@ -33,7 +33,7 @@ export const AboutComponent = () => {
       seeking new challenges and opportunities to grow my skills. In addition to
       my professional experience, I am committed to giving back to the community
       and regularly volunteer my time to mentor new graduates and share my
-      knowledge through my meetup group, "React-dojo." I am driven by a desire
+      knowledge through my meetup group, React-dojo. I am driven by a desire
       to make a positive impact and help others achieve their goals.
     </div>
   );
