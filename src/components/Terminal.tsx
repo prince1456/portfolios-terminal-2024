@@ -84,8 +84,8 @@ export default function TerminalComponents() {
   };
   const focusOnInput = () => inputRef.current?.focus();
   return (
-    <main className="flex w-full min-h-screen flex-col bg-black" onClick={focusOnInput} >
-      <div className="gradient-text font-medium text-2xl text-transparent animate-gradient">
+    <main className="flex w-full min-h-screen flex-col bg-black overflow-hidden" onClick={focusOnInput} >
+      <div className="gradient-text font-medium text-transparent animate-gradient">
         <AsciiArt />
       </div>
       <div className="pl-14 pb-3 -translate-y-4 text-xl">

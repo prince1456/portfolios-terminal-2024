@@ -1,6 +1,6 @@
 const AsciiArt = () => {
     return (
-      <pre className="text-left">
+      <pre className="text-left text-[8px] md:text-sm lg:text-lg">
         {`
           (\\ .-') /   ('-.                                  _   .-')       ('-.   
            .( OO ),' _(  OO)                                ( '.( OO )_   _(  OO)  
