@@ -88,7 +88,7 @@ export default function TerminalComponents() {
       <div className="gradient-text font-medium text-transparent animate-gradient">
         <AsciiArt />
       </div>
-      <div className="pl-14 pb-3 -translate-y-4 text-xl">
+      <div className="pl-14 pb-3 -translate-y-4 text-xl text-white">
         <p>Welcome To My Terminal Portfolio</p>
         <p>Available Commands: ls, cd, clear, cd ..</p>
       </div>
